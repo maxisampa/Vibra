@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibra — Café de Especialidad y Laminados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F2EDE4;
+      --green:   #1A3C2B;
+      --green2:  #2D5C3F;
+      --tan:     #C8A97A;
+      --ink:     #1A1A16;
+      --muted:   #6B6B5A;
+      --radius:  16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: transparent;
+      transition: background .4s, backdrop-filter .4s, padding .3s;
+    }
+    nav.scrolled {
+      background: rgba(242,237,228,.88);
+      backdrop-filter: blur(14px);
+      padding: .9rem 3rem;
+      border-bottom: 1px solid rgba(26,60,43,.12);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--green);
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      opacity: .75;
+      transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-ig {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .875rem; font-weight: 500; color: var(--green);
+      text-decoration: none; opacity: .75; transition: opacity .2s;
+    }
+    .nav-ig:hover { opacity: 1; }
+
+    /* hamburger mobile */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--green); border-radius: 2px; transition: .3s; }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    #hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 6rem 3rem 3rem;
+      gap: 2rem;
+    }
+    .hero-mascot {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0;
+    }
+    .hero-mascot img {
+      width: 480px; height: auto;
+      animation: mascot-float 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 16px 32px rgba(26,60,43,.15));
+    }
+    @keyframes mascot-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; }
+    .hero-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      font-weight: 700;
+      line-height: .9;
+      color: var(--green);
+      letter-spacing: -.04em;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 38ch;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--cream);
+      padding: .875rem 2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--green2); transform: translateY(-2px); }
+    .btn-ghost {
+      color: var(--green);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex; align-items: center; gap: .4rem;
+      opacity: .75; transition: opacity .2s;
+    }
+    .btn-ghost:hover { opacity: 1; }
+
+    .hero-right {
+      position: relative;
+      display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+      gap: 1rem;
+    }
+    .hero-img-wrap {
+      width: 100%; max-width: 580px;
+      aspect-ratio: 4/3;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: #e8e2d8;
+      transition: transform 8s ease;
+    }
+    .hero-img-wrap:hover img { transform: scale(1.04); }
+
+    .hero-badges {
+      display: flex; gap: .75rem; flex-wrap: wrap;
+      width: 100%; max-width: 580px;
+    }
+    .hero-badge {
+      flex: 1; min-width: 110px;
+      background: var(--cream);
+      border: 1.5px solid rgba(26,60,43,.15);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      box-shadow: 0 8px 28px rgba(26,60,43,.1);
+    }
+    .hero-badge strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      color: var(--green);
+      display: block;
+      line-height: 1;
+    }
+    .hero-badge span { color: var(--muted); font-size: .72rem; display: block; margin-top: .25rem; }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: var(--muted); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: .3; transform: scaleY(.6); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ─── MARQUEE ─────────────────────────────────────── */
+    .marquee-section {
+      overflow: hidden;
+      background: var(--green);
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 0 2.5rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(242,237,228,.7);
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--tan); flex-shrink: 0;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── GALLERY ─────────────────────────────────────── */
+    #galeria {
+      padding: 5rem 3rem;
+    }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 460px;
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img, .gallery-item video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+      display: block;
+    }
+    .gallery-item:hover img, .gallery-item:hover video {
+      transform: scale(1.06);
+    }
+    .gallery-item .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,60,43,.5) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+
+    /* ─── MENU ────────────────────────────────────────── */
+    #menu {
+      background: var(--green);
+      padding: 6rem 3rem;
+      color: var(--cream);
+    }
+    #menu .section-label { color: var(--tan); }
+    #menu .section-title { color: var(--cream); margin-bottom: 2rem; }
+
+    .menu-tabs {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(242,237,228,.15);
+      padding-bottom: 0;
+    }
+    .tab-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem; font-weight: 500;
+      color: rgba(242,237,228,.5);
+      letter-spacing: .04em; text-transform: uppercase;
+      padding: .7rem 1.2rem;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn.active {
+      color: var(--cream);
+      border-bottom-color: var(--tan);
+    }
+    .tab-btn:hover { color: var(--cream); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(242,237,228,.08);
+      gap: 1rem;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-name {
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--cream);
+      flex: 1;
+    }
+    .menu-detail {
+      font-size: .8rem;
+      color: rgba(242,237,228,.4);
+      white-space: nowrap;
+    }
+    .menu-optional {
+      font-size: .8rem;
+      color: var(--tan);
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+
+    /* ─── LOCALES ─────────────────────────────────────── */
+    #locales {
+      padding: 6rem 3rem;
+    }
+    .locales-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .local-card {
+      background: var(--green);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+    }
+    .local-card:hover { transform: translateY(-6px); }
+    .local-card::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(200,169,122,.12);
+    }
+    .local-num {
+      font-family: 'Fraunces', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(200,169,122,.25);
+      line-height: 1;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .local-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: .5rem;
+    }
+    .local-addr {
+      font-size: .9rem;
+      color: rgba(242,237,228,.65);
+      font-weight: 300;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .local-hours {
+      font-size: .78rem;
+      color: var(--tan);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .local-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      margin-top: 1.5rem;
+      font-size: .82rem;
+      color: rgba(242,237,228,.5);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .local-link:hover { color: var(--cream); }
+
+    /* ─── VIDEO SECTION ───────────────────────────────── */
+    #video-section {
+      padding: 0 3rem 6rem;
+    }
+    .video-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+    .video-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── INSTAGRAM ───────────────────────────────────── */
+    #instagram {
+      background: var(--cream);
+      padding: 5rem 3rem;
+      text-align: center;
+    }
+    .ig-cta {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: var(--green);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 1.1rem 2.5rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 2rem;
+      transition: background .2s, transform .2s;
+    }
+    .ig-cta:hover { background: var(--green2); transform: translateY(-2px); }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--green);
+      padding: 3rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      border-top: 1px solid rgba(242,237,228,.08);
+    }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -.02em;
+    }
+    .footer-sub { font-size: .75rem; color: rgba(242,237,228,.45); margin-top: .25rem; }
+    .footer-right { font-size: .8rem; color: rgba(242,237,228,.4); }
+
+    /* ─── REVEAL ANIMATIONS ───────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.25,.46,.45,.94), transform .7s cubic-bezier(.25,.46,.45,.94);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ─── MOBILE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1.1rem 1.5rem; }
+      nav.scrolled { padding: .8rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 4rem;
+        min-height: auto;
+      }
+      .hero-mascot { display: none; }
+      .hero-right { justify-content: center; order: -1; }
+      .hero-img-wrap { width: 100%; max-width: 400px; aspect-ratio: 4/3; border-radius: 20px; }
+      .hero-badges { display: none; }
+      .scroll-indicator { display: none; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px;
+      }
+
+      #menu { padding: 4rem 1.5rem; }
+      .tab-content.active { grid-template-columns: 1fr; }
+
+      #locales { padding: 4rem 1.5rem; }
+      .locales-grid { grid-template-columns: 1fr; }
+
+      #galeria, #video-section { padding: 4rem 1.5rem; }
+      #instagram { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Vibra</a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#locales">Locales</a></li>
+    <li>
+      <a href="https://www.instagram.com/vibracafeteria/" target="_blank" rel="noopener" class="nav-ig">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @vibracafeteria
+      </a>
+    </li>
+  </ul>
+  <button class="hamburger" aria-label="Menú" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Café de Especialidad y Laminados · Buenos Aires</span>
+    <h1 class="hero-title">
+      Vibra<em>contigo.</em>
+    </h1>
+    <p class="hero-sub">Café de especialidad, laminados artesanales y un espacio donde cada detalle importa.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary">Ver menú</a>
+      <a href="#locales" class="btn-ghost">
+        Encontranos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- MASCOTA CENTRAL -->
+  <div class="hero-mascot">
+    <img src="assets/mascota.png" alt="Mascota Vibra">
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="assets/foto3.webp" alt="Cafés en bandeja Vibra" loading="eager">
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <strong>3</strong>
+        <span>Locales en Buenos Aires</span>
+      </div>
+      <div class="hero-badge">
+        <strong>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        </strong>
+        <span>Café de Especialidad</span>
+      </div>
+      <div class="hero-badge">
+        <strong>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/><path d="M4.9 4.9l14.2 14.2"/></svg>
+        </strong>
+        <span>Laminados Artesanales</span>
+      </div>
+      <div class="hero-badge">
+        <strong>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </strong>
+        <span>Sabores</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Flat White</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Croissants Artesanales</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Pistacho Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Specialty Coffee</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Laminados Salados</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Espresso Tonic</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Raspberry Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Buenos Aires</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Flat White</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Croissants Artesanales</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Pistacho Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Specialty Coffee</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Laminados Salados</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Espresso Tonic</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Raspberry Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Buenos Aires</span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="galeria">
+  <p class="section-label reveal">Galería</p>
+  <h2 class="section-title reveal reveal-delay-1">El espacio<em style="font-family:Fraunces,serif;font-style:italic;font-weight:300"> y sus sabores.</em></h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="assets/foto4.webp" alt="Croissants artesanales Vibra" loading="lazy">
+      <div class="overlay"></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="assets/foto2.webp" alt="Interior del local y merchandising" loading="lazy">
+      <div class="overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video-section">
+  <div class="video-wrap reveal">
+    <video autoplay muted loop playsinline>
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <p class="section-label">Menú</p>
+  <h2 class="section-title">Lo que<em style="font-family:Fraunces,serif;font-style:italic;font-weight:300"> ofrecemos.</em></h2>
+
+  <div class="menu-tabs" role="tablist">
+    <button class="tab-btn active" role="tab" onclick="switchTab('cafe')">Café</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('frias')">Bebidas Frías</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('bebidas')">Bebidas</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('laminados')">Laminados Dulces</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('salados')">Laminados Salados</button>
+  </div>
+
+  <!-- Café de Especialidad -->
+  <div class="tab-content active" id="tab-cafe">
+    <div>
+      <div class="menu-item"><span class="menu-name">Flat White</span><span class="menu-detail">220 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Latte</span><span class="menu-detail">320 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Macaccino</span><span class="menu-detail">220 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Cappuccino</span><span class="menu-detail">220 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Espresso Doble</span><span class="menu-detail">60 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Americano</span><span class="menu-detail">180 ml</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><span class="menu-name">Latte Vainilla</span><span class="menu-detail">320 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Latte Caramel</span><span class="menu-detail">320 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Latte Ice</span><span class="menu-detail">280 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Submarino</span><span class="menu-detail">320 ml</span></div>
+      <div class="menu-item"><span class="menu-name">Extra Shot</span><span class="menu-detail">—</span></div>
+      <p class="menu-optional">+ Leche de almendras disponible</p>
+    </div>
+  </div>
+
+  <!-- Bebidas Frías -->
+  <div class="tab-content" id="tab-frias">
+    <div>
+      <div class="menu-item"><span class="menu-name">American Orange</span></div>
+      <div class="menu-item"><span class="menu-name">Raspberry Ice</span></div>
+      <div class="menu-item"><span class="menu-name">Espresso Tonic</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><span class="menu-name">Limonada Hibiscus</span></div>
+      <div class="menu-item"><span class="menu-name">Pistacho Ice</span></div>
+    </div>
+  </div>
+
+  <!-- Bebidas -->
+  <div class="tab-content" id="tab-bebidas">
+    <div>
+      <div class="menu-item"><span class="menu-name">Agua</span></div>
+      <div class="menu-item"><span class="menu-name">Jugo de Naranja</span></div>
+      <div class="menu-item"><span class="menu-name">Limonada</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><span class="menu-name">Vermouth c. Naranja y Tónica</span></div>
+      <div class="menu-item"><span class="menu-name">Gin Tonic</span></div>
+    </div>
+  </div>
+
+  <!-- Laminados Dulces -->
+  <div class="tab-content" id="tab-laminados">
+    <div>
+      <div class="menu-item"><span class="menu-name">Croissant</span></div>
+      <div class="menu-item"><span class="menu-name">Pan de Chocolate</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Choco Blanco y Pistacho</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Nutella</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Mascarpone y Frambuesa</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><span class="menu-name">Croissant Crema Pastelera</span></div>
+      <div class="menu-item"><span class="menu-name">Viera Banana y Salsa Toffee</span></div>
+      <div class="menu-item"><span class="menu-name">Pan Suizo</span></div>
+      <div class="menu-item"><span class="menu-name">Flat Croissant</span></div>
+      <div class="menu-item"><span class="menu-name">Roll Canela</span></div>
+    </div>
+  </div>
+
+  <!-- Laminados Salados -->
+  <div class="tab-content" id="tab-salados">
+    <div>
+      <div class="menu-item"><span class="menu-name">Croissant Mortadela, Pesto y Stracciatella</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Jamón y Queso</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Queso Ahumado, Tomate Confitado y Albahaca</span></div>
+    </div>
+    <div>
+      <div class="menu-item"><span class="menu-name">Croissant Jamón Crudo, Rúculo y Queso</span></div>
+      <div class="menu-item"><span class="menu-name">Croissant Huevo Poché, Guacamole y Queso</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALES -->
+<section id="locales">
+  <p class="section-label reveal">Dónde encontrarnos</p>
+  <h2 class="section-title reveal reveal-delay-1">Nuestros<em style="font-family:Fraunces,serif;font-style:italic;font-weight:300"> locales.</em></h2>
+
+  <div class="locales-grid">
+    <div class="local-card reveal">
+      <span class="local-num">01</span>
+      <p class="local-name">Palermo</p>
+      <p class="local-addr">Bulnes 2158<br>Buenos Aires</p>
+      <p class="local-hours">Mar – Dom · 8:30 – 19:30</p>
+      <a class="local-link" href="https://maps.google.com/?q=Bulnes+2158+Buenos+Aires" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ver en mapa
+      </a>
+    </div>
+
+    <div class="local-card reveal reveal-delay-1">
+      <span class="local-num">02</span>
+      <p class="local-name">Palermo</p>
+      <p class="local-addr">Julián Álvarez 2393<br>Buenos Aires</p>
+      <p class="local-hours">Mar – Dom · 8:30 – 19:30</p>
+      <a class="local-link" href="https://maps.google.com/?q=Julian+Alvarez+2393+Buenos+Aires" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ver en mapa
+      </a>
+    </div>
+
+    <div class="local-card reveal reveal-delay-2">
+      <span class="local-num">03</span>
+      <p class="local-name">Recoleta</p>
+      <p class="local-addr">Arenales 2434<br>Buenos Aires</p>
+      <p class="local-hours">Mar – Dom · 8:30 – 19:30</p>
+      <a class="local-link" href="https://maps.google.com/?q=Arenales+2434+Buenos+Aires" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ver en mapa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+<section id="instagram">
+  <p class="section-label reveal">Seguinos</p>
+  <h2 class="section-title reveal reveal-delay-1" style="max-width:14ch;margin:0 auto;">Día a día en<em style="font-family:Fraunces,serif;font-style:italic;font-weight:300"> Instagram.</em></h2>
+  <div class="reveal reveal-delay-2">
+    <a href="https://www.instagram.com/vibracafeteria/" target="_blank" rel="noopener" class="ig-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @vibracafeteria
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-logo">Vibra</p>
+    <p class="footer-sub">Café de Especialidad y Laminados · Buenos Aires</p>
+  </div>
+  <p class="footer-right">© 2025 Vibra. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  // NAV scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Menu tabs
+  function switchTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // Hamburger (mobile)
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (!links) return;
+    const open = links.style.display === 'flex';
+    links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--cream);padding:2rem 1.5rem;gap:1.5rem;border-bottom:1px solid rgba(26,60,43,.1);z-index:99;';
+  }
+</script>
+</body>
+</html>
