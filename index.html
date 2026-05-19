@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://vibracafe.vercel.app/">
   <meta property="og:title" content="Vibra — Café de Especialidad y Laminados · Buenos Aires">
   <meta property="og:description" content="Café de especialidad, laminados artesanales y un espacio donde cada detalle importa. 3 locales en Palermo y Recoleta.">
-  <meta property="og:image" content="https://vibracafe.vercel.app/assets/foto3.webp">
+  <meta property="og:image" content="https://vibracafe.vercel.app/assets/vibra1.jfif">
   <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="Vibra">
 
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vibra — Café de Especialidad y Laminados · Buenos Aires">
   <meta name="twitter:description" content="Café de especialidad, laminados artesanales y un espacio donde cada detalle importa. 3 locales en Palermo y Recoleta.">
-  <meta name="twitter:image" content="https://vibracafe.vercel.app/assets/foto3.webp">
+  <meta name="twitter:image" content="https://vibracafe.vercel.app/assets/vibra1.jfif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Structured Data (Google Rich Results) -->
@@ -34,7 +34,7 @@
       "description": "Café de especialidad, laminados artesanales y un espacio donde cada detalle importa.",
       "url": "https://vibracafe.vercel.app/",
       "sameAs": ["https://www.instagram.com/vibracafeteria/"],
-      "image": "https://vibracafe.vercel.app/assets/foto3.webp",
+      "image": "https://vibracafe.vercel.app/assets/vibra1.jfif",
       "servesCuisine": ["Café de Especialidad", "Laminados", "Pastelería"],
       "address": {
         "@type": "PostalAddress",
@@ -58,7 +58,7 @@
       "description": "Café de especialidad, laminados artesanales y un espacio donde cada detalle importa.",
       "url": "https://vibracafe.vercel.app/",
       "sameAs": ["https://www.instagram.com/vibracafeteria/"],
-      "image": "https://vibracafe.vercel.app/assets/foto3.webp",
+      "image": "https://vibracafe.vercel.app/assets/vibra1.jfif",
       "servesCuisine": ["Café de Especialidad", "Laminados", "Pastelería"],
       "address": {
         "@type": "PostalAddress",
@@ -82,7 +82,7 @@
       "description": "Café de especialidad, laminados artesanales y un espacio donde cada detalle importa.",
       "url": "https://vibracafe.vercel.app/",
       "sameAs": ["https://www.instagram.com/vibracafeteria/"],
-      "image": "https://vibracafe.vercel.app/assets/foto3.webp",
+      "image": "https://vibracafe.vercel.app/assets/vibra1.jfif",
       "servesCuisine": ["Café de Especialidad", "Laminados", "Pastelería"],
       "address": {
         "@type": "PostalAddress",
@@ -148,6 +148,13 @@
       color: var(--green);
       letter-spacing: -.02em;
       text-decoration: none;
+      display: flex; align-items: center;
+    }
+    .nav-logo-img {
+      height: 32px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply;
     }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -265,8 +272,7 @@
     }
     .hero-img-wrap img {
       width: 100%; height: 100%;
-      object-fit: contain;
-      background: #e8e2d8;
+      object-fit: cover;
       transition: transform 8s ease;
     }
     .hero-img-wrap:hover img { transform: scale(1.04); }
@@ -367,7 +373,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 460px;
+      grid-auto-rows: 320px;
       gap: 12px;
     }
     .gallery-item {
@@ -428,7 +434,7 @@
     .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
 
     .menu-item {
-      display: flex; justify-content: space-between; align-items: baseline;
+      display: flex; justify-content: space-between; align-items: flex-start;
       padding: 1.1rem 0;
       border-bottom: 1px solid rgba(242,237,228,.08);
       gap: 1rem;
@@ -440,10 +446,26 @@
       color: var(--cream);
       flex: 1;
     }
-    .menu-detail {
-      font-size: .8rem;
+    .menu-vol {
+      font-size: .75rem;
       color: rgba(242,237,228,.4);
+      font-weight: 300;
+      margin-left: .35rem;
+    }
+    .menu-price {
+      font-size: .85rem;
+      color: var(--tan);
       white-space: nowrap;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .menu-desc {
+      display: block;
+      font-size: .72rem;
+      color: rgba(242,237,228,.4);
+      margin-top: .25rem;
+      font-style: normal;
+      font-weight: 300;
     }
     .menu-optional {
       font-size: .8rem;
@@ -602,7 +624,7 @@
 
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 220px;
+        grid-auto-rows: 180px;
       }
 
       #menu { padding: 4rem 1.5rem; }
@@ -662,7 +684,7 @@
 
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <img src="assets/foto3.webp" alt="Cafés en bandeja Vibra" loading="eager">
+      <img src="assets/vibra8.jfif" alt="Vibra Café" loading="eager">
     </div>
     <div class="hero-badges">
       <div class="hero-badge">
@@ -701,7 +723,7 @@
   <div class="marquee-track">
     <span class="marquee-item"><span class="marquee-dot"></span>Flat White</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Croissants Artesanales</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Pistacho Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Cookies</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Specialty Coffee</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Laminados Salados</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Espresso Tonic</span>
@@ -709,7 +731,7 @@
     <span class="marquee-item"><span class="marquee-dot"></span>Buenos Aires</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Flat White</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Croissants Artesanales</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Pistacho Ice</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Cookies</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Specialty Coffee</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Laminados Salados</span>
     <span class="marquee-item"><span class="marquee-dot"></span>Espresso Tonic</span>
@@ -725,11 +747,19 @@
 
   <div class="gallery-grid">
     <div class="gallery-item reveal">
-      <img src="assets/foto4.webp" alt="Croissants artesanales Vibra" loading="lazy">
+      <img src="assets/vibra4.jfif" alt="Vibra Café" loading="lazy">
       <div class="overlay"></div>
     </div>
     <div class="gallery-item reveal reveal-delay-1">
-      <img src="assets/foto2.webp" alt="Interior del local y merchandising" loading="lazy">
+      <img src="assets/vibra5.jfif" alt="Vibra Café" loading="lazy">
+      <div class="overlay"></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="assets/vibra6.jfif" alt="Vibra Café" loading="lazy">
+      <div class="overlay"></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="assets/vibra7.jfif" alt="Vibra Café" loading="lazy">
       <div class="overlay"></div>
     </div>
   </div>
@@ -751,86 +781,255 @@
 
   <div class="menu-tabs" role="tablist">
     <button class="tab-btn active" role="tab" onclick="switchTab('cafe')">Café</button>
-    <button class="tab-btn" role="tab" onclick="switchTab('frias')">Bebidas Frías</button>
-    <button class="tab-btn" role="tab" onclick="switchTab('bebidas')">Bebidas</button>
     <button class="tab-btn" role="tab" onclick="switchTab('laminados')">Laminados Dulces</button>
     <button class="tab-btn" role="tab" onclick="switchTab('salados')">Laminados Salados</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('cookies')">Cookies</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('frias')">Bebidas Frías</button>
+    <button class="tab-btn" role="tab" onclick="switchTab('bebidas')">Bebidas</button>
   </div>
 
   <!-- Café de Especialidad -->
   <div class="tab-content active" id="tab-cafe">
     <div>
-      <div class="menu-item"><span class="menu-name">Flat White</span><span class="menu-detail">220 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Latte</span><span class="menu-detail">320 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Macaccino</span><span class="menu-detail">220 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Cappuccino</span><span class="menu-detail">220 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Espresso Doble</span><span class="menu-detail">60 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Americano</span><span class="menu-detail">180 ml</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Flat White <span class="menu-vol">220 ml</span></span>
+        <span class="menu-price">$5.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Latte <span class="menu-vol">320 ml</span></span>
+        <span class="menu-price">$5.200</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Mocaccino <span class="menu-vol">220 ml</span></span>
+        <span class="menu-price">$5.200</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Capuccino <span class="menu-vol">220 ml</span></span>
+        <span class="menu-price">$5.200</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Espresso Doble <span class="menu-vol">60 ml</span></span>
+        <span class="menu-price">$4.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Americano <span class="menu-vol">160 ml</span></span>
+        <span class="menu-price">$4.000</span>
+      </div>
     </div>
     <div>
-      <div class="menu-item"><span class="menu-name">Latte Vainilla</span><span class="menu-detail">320 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Latte Caramel</span><span class="menu-detail">320 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Latte Ice</span><span class="menu-detail">280 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Submarino</span><span class="menu-detail">320 ml</span></div>
-      <div class="menu-item"><span class="menu-name">Extra Shot</span><span class="menu-detail">—</span></div>
-      <p class="menu-optional">+ Leche de almendras disponible</p>
-    </div>
-  </div>
-
-  <!-- Bebidas Frías -->
-  <div class="tab-content" id="tab-frias">
-    <div>
-      <div class="menu-item"><span class="menu-name">American Orange</span></div>
-      <div class="menu-item"><span class="menu-name">Raspberry Ice</span></div>
-      <div class="menu-item"><span class="menu-name">Espresso Tonic</span></div>
-    </div>
-    <div>
-      <div class="menu-item"><span class="menu-name">Limonada Hibiscus</span></div>
-      <div class="menu-item"><span class="menu-name">Pistacho Ice</span></div>
-    </div>
-  </div>
-
-  <!-- Bebidas -->
-  <div class="tab-content" id="tab-bebidas">
-    <div>
-      <div class="menu-item"><span class="menu-name">Agua</span></div>
-      <div class="menu-item"><span class="menu-name">Jugo de Naranja</span></div>
-      <div class="menu-item"><span class="menu-name">Limonada</span></div>
-    </div>
-    <div>
-      <div class="menu-item"><span class="menu-name">Vermouth c. Naranja y Tónica</span></div>
-      <div class="menu-item"><span class="menu-name">Gin Tonic</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Latte Vainilla <span class="menu-vol">320 ml</span></span>
+        <span class="menu-price">$6.300</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Latte Caramel <span class="menu-vol">320 ml</span></span>
+        <span class="menu-price">$6.300</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Submarino <span class="menu-vol">320 ml</span></span>
+        <span class="menu-price">$5.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Matcha</span>
+        <span class="menu-price">$5.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Extra Shot</span>
+        <span class="menu-price">$2.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Leche de Almendras</span>
+        <span class="menu-price">$1.000</span>
+      </div>
     </div>
   </div>
 
   <!-- Laminados Dulces -->
   <div class="tab-content" id="tab-laminados">
     <div>
-      <div class="menu-item"><span class="menu-name">Croissant</span></div>
-      <div class="menu-item"><span class="menu-name">Pan de Chocolate</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Choco Blanco y Pistacho</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Nutella</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Mascarpone y Frambuesa</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant</span>
+        <span class="menu-price">$4.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Pan de Chocolate</span>
+        <span class="menu-price">$7.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Choco Blanco y Pistacho</span>
+        <span class="menu-price">$7.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Nutella</span>
+        <span class="menu-price">$7.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Mascarpone y Frambuesa</span>
+        <span class="menu-price">$6.500</span>
+      </div>
     </div>
     <div>
-      <div class="menu-item"><span class="menu-name">Croissant Crema Pastelera</span></div>
-      <div class="menu-item"><span class="menu-name">Viera Banana y Salsa Toffee</span></div>
-      <div class="menu-item"><span class="menu-name">Pan Suizo</span></div>
-      <div class="menu-item"><span class="menu-name">Flat Croissant</span></div>
-      <div class="menu-item"><span class="menu-name">Roll Canela</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Crema Pastelera</span>
+        <span class="menu-price">$4.800</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Dulce de Leche</span>
+        <span class="menu-price">$4.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Roll de Canela</span>
+        <span class="menu-price">$4.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Especial del Día</span>
+        <span class="menu-price">$6.000</span>
+      </div>
     </div>
   </div>
 
   <!-- Laminados Salados -->
   <div class="tab-content" id="tab-salados">
     <div>
-      <div class="menu-item"><span class="menu-name">Croissant Mortadela, Pesto y Stracciatella</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Jamón y Queso</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Queso Ahumado, Tomate Confitado y Albahaca</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Jamón y Queso</span>
+        <span class="menu-price">$7.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Mortadella, Pesto y Stracciatella</span>
+        <span class="menu-price">$13.000</span>
+      </div>
     </div>
     <div>
-      <div class="menu-item"><span class="menu-name">Croissant Jamón Crudo, Rúculo y Queso</span></div>
-      <div class="menu-item"><span class="menu-name">Croissant Huevo Poché, Guacamole y Queso</span></div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Queso Ahumado, Tomate Confitado y Albahaca</span>
+        <span class="menu-price">$12.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Croissant Jamón Crudo, Rúcula y Queso</span>
+        <span class="menu-price">$13.000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookies -->
+  <div class="tab-content" id="tab-cookies">
+    <div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Vegana</span>
+          <span class="menu-desc">vainilla y chips de chocolate</span>
+        </div>
+        <span class="menu-price">$4.000</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Red Velvet</span>
+          <span class="menu-desc">limón, cacao, chips de choco blanco</span>
+        </div>
+        <span class="menu-price">$4.000</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Snicker</span>
+          <span class="menu-desc">maní, pasta de maní, caramelo y chocolate</span>
+        </div>
+        <span class="menu-price">$5.000</span>
+      </div>
+    </div>
+    <div>
+      <div class="menu-item">
+        <span class="menu-name">Chocolate y Nutella</span>
+        <span class="menu-price">$5.000</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Chocolate Dubai</span>
+        <span class="menu-price">$6.000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bebidas Frías -->
+  <div class="tab-content" id="tab-frias">
+    <div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">American Orange</span>
+          <span class="menu-desc">agua, 2 espressos, jugo de naranja</span>
+        </div>
+        <span class="menu-price">$6.500</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Espresso Tonic</span>
+          <span class="menu-desc">agua, 2 espressos, agua tónica</span>
+        </div>
+        <span class="menu-price">$6.500</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Affogato Pistacho</span>
+          <span class="menu-desc">helado pistachio, 2 espressos, pistacho tostado</span>
+        </div>
+        <span class="menu-price">$6.000</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Naranjada Albahaca</span>
+          <span class="menu-desc">hielo, jugo naranja, syrup, jugo limón, albahaca</span>
+        </div>
+        <span class="menu-price">$6.000</span>
+      </div>
+    </div>
+    <div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Raspberry Ice</span>
+          <span class="menu-desc">hielo, leche texturizada, syrup, jalea de frambuesa</span>
+        </div>
+        <span class="menu-price">$6.500</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Limonada Hibiscus</span>
+          <span class="menu-desc">hielo, agua, jugo de limón, syrup de hibiscus casero</span>
+        </div>
+        <span class="menu-price">$6.000</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Sauco y Eucalipto</span>
+          <span class="menu-desc">hielo, jugo de limón, syrup eucalipto, syrup saúco</span>
+        </div>
+        <span class="menu-price">$6.000</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="menu-name">Limonada de Sandía</span>
+          <span class="menu-desc">hielo, sandía, jugo de limón, syrup</span>
+        </div>
+        <span class="menu-price">$6.000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bebidas -->
+  <div class="tab-content" id="tab-bebidas">
+    <div>
+      <div class="menu-item">
+        <span class="menu-name">Agua</span>
+        <span class="menu-price">$2.500</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-name">Jugo de Naranja</span>
+        <span class="menu-price">$4.500</span>
+      </div>
+    </div>
+    <div>
+      <div class="menu-item">
+        <span class="menu-name">Vermouth con Naranja y Tónica</span>
+        <span class="menu-price">$7.000</span>
+      </div>
     </div>
   </div>
 </section>
@@ -929,4 +1128,3 @@
 </script>
 </body>
 </html>
-
